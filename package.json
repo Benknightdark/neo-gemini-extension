@@ -1,10 +1,23 @@
 {
   "name": "neo-gemini-extension",
-  "module": "index.ts",
+  "version": "1.0.0",
   "type": "module",
+  "description": "Neo Tools MCP Server",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "bun run build:bundle",
+    "build:tsc": "tsc",
+    "build:bundle": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && bun build src/server.ts --outdir dist --target node --minify && cp src/prompts.toml dist/prompts.toml",
+    "start": "node dist/server.js",
+    "dev": "bun run src/server.ts",
+    "prepare": "bun run build",
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
   "private": true,
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/node": "^22.0.0"
   },
   "peerDependencies": {
     "typescript": "^5"
