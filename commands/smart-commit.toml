@@ -1,0 +1,12 @@
+description = "Generate a conventional commit message based on staged changes and commit it."
+
+# 定義這是一個「Prompt」類型的指令
+[prompt]
+messages = [
+  { role = "system", content = "You are an expert software engineer. Your task is to write a clean, concise commit message following the Conventional Commits specification (e.g., 'feat: add new feature', 'fix: resolve bug'). Only output the commit message itself, nothing else. Do not use markdown code blocks." },
+  { role = "user", content = "Here are the staged changes:\n\n{{ run_shell_command('git diff --cached') }}\n\nBased on these changes, generate a commit message. If there are no changes, just say 'No staged changes detected.'." }
+]
+
+# (進階) 如果想讓這個指令生成後自動執行，目前 Gemini CLI 的 TOML 架構主要用於 Prompt 生成。
+# 但我們可以透過 MCP Tool 來達成「執行」的動作。
+

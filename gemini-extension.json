@@ -1,0 +1,15 @@
+{
+  "name": "bun-power-tools",
+  "version": "1.0.0",
+  "description": "High-performance filesystem tools powered by Bun.",
+  "mcpServers": {
+    "bun-tools": {
+      "command": "bun",
+      "args": ["run", "${extensionPath}/src/server.ts"],
+      "env": {
+        "BUN_VERSION": "1.0"
+      }
+    }
+  },
+  "contextFileName": "BUN_CONTEXT.md"
+}
