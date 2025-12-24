@@ -46,7 +46,7 @@ gemini install .
 或者從 GitHub 遠端安裝：
 
 ```bash
-gemini install github.com/Benknightdark/neo-gemini-extension
+gemini extension install https://github.com/Benknightdark/neo-gemini-extension
 ```
 
 ### 常用指令
