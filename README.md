@@ -68,17 +68,18 @@ gemini extension install https://github.com/Benknightdark/neo-mcp
 
 ## 發布流程 (Release Process)
 
-本專案配置了 GitHub Actions 自動化發布機制，只需建立並推送標籤即可觸發：
+本專案配置了 GitHub Actions 自動化發布機制，請遵循以下步驟：
 
-1.  **建立標籤**: 標籤必須以 `v` 開頭（例如 `v1.0.0`）。
+1.  **更新安裝設定**: 修改 `.gemini-extension-install.json` 中的 `releaseTag` 為即將發布的版本號（例如 `"v1.0.0"`）。
+2.  **建立標籤**: 標籤必須以 `v` 開頭（例如 `v1.0.0`），且必須與上一步驟的版本號一致。
     ```bash
     git tag v1.0.0
     ```
-2.  **推送標籤**: 將標籤推送到 GitHub。
+3.  **推送標籤**: 將標籤推送到 GitHub。
     ```bash
     git push origin v1.0.0
     ```
-3.  **自動化發布**: GitHub Action 會自動執行建置、打包並建立一個包含資產 (`neo-mcp.zip`) 的 Release。
+4.  **自動化發布**: GitHub Action 會自動執行建置、打包並建立一個包含資產 (`neo-mcp.zip`) 的 Release。
 
 ## 開發規範
 
