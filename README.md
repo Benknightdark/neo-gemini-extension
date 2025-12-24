@@ -1,4 +1,4 @@
-# neo-mcp
+# neo-mcp1
 
 一個專為增強 Gemini CLI 體驗而設計的 Model Context Protocol (MCP) Server 擴充功能。
 
