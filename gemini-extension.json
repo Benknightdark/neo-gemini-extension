@@ -4,11 +4,8 @@
   "description": "neo 出品的 MCP Server 擴充功能，提升 Gemini CLI 體驗",
   "mcpServers": {
     "neo-mcp": {
-      "command": "bun",
-      "args": ["${extensionPath}/dist/server.js"],
-      "env": {
-        "BUN_VERSION": "1.0"
-      }
+      "command": "node",
+      "args": ["${extensionPath}/dist/server.js"]
     }
   },
   "contextFileName": "GEMINI.md"
