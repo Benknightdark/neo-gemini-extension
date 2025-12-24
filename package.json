@@ -7,11 +7,12 @@
   "scripts": {
     "build": "bun run clean && bun run build:bundle",
     "build:bundle": "bun build src/server.ts --outdir dist --target node --minify",
+    "install-deps": "npm install",
     "clean": "rm -rf dist",
     "start": "node dist/server.js",
     "dev": "bun src/server.ts",
     "prepare": "bun run build",
-    "postinstall": "bun run build",
+    "postinstall": "npm run install-deps && npm run build",
     "typecheck": "tsc --noEmit",
     "test": "echo \"No tests specified\" && exit 0"
   },
