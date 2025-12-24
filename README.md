@@ -68,15 +68,14 @@ gemini extension install https://github.com/Benknightdark/neo-mcp
 
 ## 開發規範
 
-1.  **Bun First**: 專案依賴 Bun 專屬 API (如 `Bun.spawnSync`, `Bun.file`, `Bun.TOML`) 進行檔案系統與處理程序操作。除非必要，否則請勿使用 Node.js 等效 API。
-2.  **MCP 模式**: 遵循 MCP SDK 模式：
-    *   初始化 `McpServer`。
-    *   透過 `server.registerPrompt` 註冊功能。
-    *   使用 `StdioServerTransport` 進行連接。
-3.  **Prompt 管理**:
-    *   複雜的 Prompt 模板儲存於 `commands/` 目錄下（如 `git-commit.toml`）。
-    *   伺服器在執行時會載入這些檔案。
-4.  **語言**: 目前 Prompt 設計主要針對繁體中文使用者。
+為了確保專案的品質與一致性，所有開發者（包含 AI Agent）應遵循以下規範：
+
+1.  **資深架構師思維 (Senior Architect Persona)**: 所有設計與代碼實現應追求簡潔、高效且具備良好的擴展性，避免過度工程或引入不必要的依賴。
+2.  **Bun API 優先 (Bun First)**: 專案開發應優先採用 Bun 專屬 API（如 `Bun.spawn`, `Bun.file`）。僅在必要或相容性考量下才使用 Node.js 等效 API。
+3.  **事實查核思維 (Fact-Check Thinking)**: 進行任何變更前，必須驗證檔案路徑、符號定義與系統狀態，嚴禁基於假設進行開發。
+4.  **語意化提交 (Conventional Commits)**: 嚴格遵守 Conventional Commits 規範，確保 `git_commit` 功能生成的訊息精確反映邏輯變更。
+5.  **Prompt 邏輯分離**: 所有的 Prompt 模板應統一管理於 `commands/` 目錄，透過靜態資源載入機制與伺服器邏輯解耦。
+6.  **繁體中文優先**: 預設的互動語言、提示詞與說明文件應以繁體中文（台灣）為主。
 
 ## 目錄結構
 
