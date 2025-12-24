@@ -1,8 +1,6 @@
 # neo-mcp
 
-** 一個專為增強 Gemini CLI 體驗而設計的 Model Context Protocol (MCP) Server 擴充功能。本專案採用高效能的 **Bun** 執行環境與 **TypeScript** 構建，目前專注於自動化 Git 工作流程。
-
-此擴充功能透過 MCP SDK 與 Gemini 整合，提供專門的 Prompt，利用本地系統工具（如 `git`）執行任務並生成具備上下文感知的高品質回應。
+一個專為增強 Gemini CLI 體驗而設計的 Model Context Protocol (MCP) Server 擴充功能。
 
 ## 主要功能
 
