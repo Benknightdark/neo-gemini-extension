@@ -53,8 +53,8 @@ server.registerPrompt(
     const diff = new TextDecoder().decode(stdout);
 
     // 3. 組合 Prompt
-    // 從 prompts.toml 讀取 Prompt Template
-    const tomlPath = `${import.meta.dir}/prompts.toml`;
+    // 從 src/prompts/git-commit.toml 讀取 Prompt Template
+    const tomlPath = `${import.meta.dir}/prompts/git-commit.toml`;
     const tomlContent = await Bun.file(tomlPath).text();
     const prompts = Bun.TOML.parse(tomlContent) as any;
     const promptTemplate = prompts.git_commit.template;

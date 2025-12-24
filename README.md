@@ -35,6 +35,20 @@
 bun install
 ```
 
+### 安裝擴充功能 (Install Extension)
+
+若要將此擴充功能安裝至 Gemini CLI，請在專案根目錄執行：
+
+```bash
+gemini install .
+```
+
+或者從 GitHub 遠端安裝：
+
+```bash
+gemini install github.com/Benknightdark/neo-gemini-extension
+```
+
 ### 常用指令
 
 *   **建置 (Build)**: 清理 `dist/` 目錄，打包伺服器程式碼並複製資源檔。

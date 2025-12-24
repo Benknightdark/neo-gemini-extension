@@ -7,7 +7,7 @@
   "scripts": {
     "build": "bun run build:bundle",
     "build:tsc": "tsc",
-    "build:bundle": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && bun build src/server.ts --outdir dist --target bun --minify && cp src/prompts.toml dist/prompts.toml",
+    "build:bundle": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && bun build src/server.ts --outdir dist --target bun --minify && cp -r src/prompts dist/prompts",
     "start": "bun dist/server.js",
     "dev": "bun run src/server.ts",
     "prepare": "bun run build",
