@@ -1,7 +1,7 @@
 {
   "name": "neo-mcp",
   "version": "1.0.0",
-  "description": "neo 出品的 MCP Server 擴充功能，提升 Gemini CLI 體驗",
+  "description": "neo 出品的 MCP Server 擴充功能，提升 Gemini CLI 體驗。",
   "mcpServers": {
     "neo-mcp": {
       "command": "node",
