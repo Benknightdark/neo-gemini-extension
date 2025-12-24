@@ -25,12 +25,16 @@ jobs:
       - name: Build
         run: bun run build
 
+      - name: Package Extension
+        run: |
+          zip -r neo-mcp.zip dist gemini-extension.json package.json GEMINI.md README.md commands
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            dist/*
+            neo-mcp.zip
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
