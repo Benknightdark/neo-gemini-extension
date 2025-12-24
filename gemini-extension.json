@@ -1,9 +1,9 @@
 {
-  "name": "neo-tools",
+  "name": "neo-mcp",
   "version": "1.0.0",
-  "description": "High-performance filesystem tools powered by Bun.",
+  "description": "neo 出品的 MCP Server 擴充功能，提升 Gemini CLI 體驗",
   "mcpServers": {
-    "neo-tools": {
+    "neo-mcp": {
       "command": "bun",
       "args": ["${extensionPath}/dist/server.js"],
       "env": {
@@ -11,5 +11,5 @@
       }
     }
   },
-  "contextFileName": "BUN_CONTEXT.md"
+  "contextFileName": "GEMINI.md"
 }
