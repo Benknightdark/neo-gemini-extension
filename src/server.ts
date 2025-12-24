@@ -1,12 +1,42 @@
 #!/usr/bin/env bun
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "zod";
 
 // 初始化 MCP Server
 const server = new McpServer({
   name: "neo-tools",
   version: "1.0.0",
 });
+
+// 定義 Tool
+server.registerTool(
+  "run_git_commit",
+  {
+    description: "執行 Git Commit 指令",
+    inputSchema: {
+      message: z.string().describe("符合 Conventional Commits 規範的 Commit Message"),
+    },
+  },
+  async ({ message }) => {
+    const { exitCode, stdout, stderr } = Bun.spawnSync(["git", "commit", "-m", message], {
+      cwd: process.cwd(),
+    });
+
+    if (exitCode !== 0) {
+      const error = new TextDecoder().decode(stderr);
+      return {
+        content: [{ type: "text", text: `Commit 失敗:\n${error}` }],
+        isError: true,
+      };
+    }
+
+    const output = new TextDecoder().decode(stdout);
+    return {
+      content: [{ type: "text", text: `Commit 成功:\n${output}` }],
+    };
+  }
+);
 
 // 定義 Prompt
 server.registerPrompt(
