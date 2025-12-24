@@ -54,7 +54,7 @@ server.registerTool(
 server.registerPrompt(
   "git_commit",
   {
-    description: "將目前所有變更 (Staged) 轉化為高品質的 Conventional Commits 訊息",
+    description: prompts.description,
   },
   async () => {
     // 1. 執行 git add .
@@ -68,7 +68,7 @@ server.registerPrompt(
     const diff = stdout;
 
     // 3. 組合 Prompt
-    const promptTemplate = prompts.git_commit.template;
+    const promptTemplate = prompts.prompt;
 
     const finalPrompt = promptTemplate.replace("{{args}}", diff);
 

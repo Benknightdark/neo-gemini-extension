@@ -1,20 +1,20 @@
-name: Release
+name: Release # 發佈流程
 
 on:
   push:
     tags:
-      - 'v*'
+      - 'v*' # 當推送以 v 開頭的標籤時觸發（例如 v1.0.0）
 
 jobs:
   release:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write # 需要寫入權限來提交變更並建立 Release
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # 取得完整歷史紀錄以利版本標記
 
       - name: Update versions and commit
         run: |
@@ -28,7 +28,7 @@ jobs:
           # 更新 .gemini-extension-install.json 的 releaseTag
           jq ".releaseTag = \"$FULL_TAG\"" .gemini-extension-install.json > temp.json && mv temp.json .gemini-extension-install.json
           
-          # 設定 Git 並提交變更
+          # 設定 Git 並提交變更回 main 分支
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add gemini-extension.json .gemini-extension-install.json
@@ -48,6 +48,7 @@ jobs:
 
       - name: Package Extension
         run: |
+          # 將必要檔案打包成 ZIP 壓縮檔
           zip -r neo-mcp.zip dist gemini-extension.json package.json GEMINI.md README.md commands
 
       - name: Create Release
@@ -56,6 +57,6 @@ jobs:
         with:
           files: |
             neo-mcp.zip
-          generate_release_notes: true
+          generate_release_notes: true # 自動產生 Release Notes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
