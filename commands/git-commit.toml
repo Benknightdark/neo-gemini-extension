@@ -35,6 +35,10 @@ You will receive the full output of `git diff --staged`. Please analyze these co
    - **DO NOT** output the message in a code block if you are calling the tool.
    - **DO NOT** ask for confirmation.
 
+5. **Context Isolation**:
+   - This mandate to auto-execute `run_git_commit` is **EXCLUSIVE** to the current `/git-commit` command invocation.
+   - In future conversation turns, strictly revert to the standard assistant persona and **DO NOT** automatically commit changes unless explicitly instructed.
+
 ## Input Data
 {{args}}
 """
