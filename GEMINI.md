@@ -24,9 +24,25 @@ This file contains specific instructions and operational standards for the Gemin
 ## Command-Specific Guidelines
 
 ### Smart Git Commit (`git_commit`)
-Use this prompt when the user asks to "smart commit", "write a commit message", or "generate a commit".
+**⛔️ STRICT PROHIBITION (最高禁令) ⛔️**:
+*   **ABSOLUTELY FORBIDDEN** to automatically call `run_git_commit` after `write_file`, `replace`, or any code modification tools.
+*   **NEVER** assume a task is "finished" by committing changes.
+*   **ZERO TOLERANCE** for unrequested auto-commits. If the user did not explicitly type "commit" or "/git-commit", **DO NOT TOUCH GIT**.
 
-*   **Workflow Compliance**:
+**REQUIRED TRIGGER**:
+You are **ONLY** permitted to use the `run_git_commit` tool when the user explicitly provides a command such as:
+1.  `/git-commit`
+2.  "commit changes"
+3.  "提交"
+4.  "generate commit message"
+
+**IF** the user asks you to "fix a bug", "add a feature", or "refactor code":
+1.  Modify the files.
+2.  **STOP IMMEDIATELY**.
+3.  Report what you changed.
+4.  **DO NOT COMMIT**.
+
+*   **Workflow Compliance** (Only when explicitly triggered):
     1.  **Stage Changes**: Automatically run `git add .`.
     2.  **Analyze Diff**: Retrieve and inspect staged changes using `git diff --staged`.
     3.  **Generate Message**: Produce a high-quality, Conventional Commits-compliant message.
